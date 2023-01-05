@@ -1,0 +1,55 @@
+{% extends 'store/base.html' %}
+{% load static %}
+    {% block body %}
+    <div class="page-wrapper">
+        {% include 'store/includes/navbar.html' %}
+        <main class="main">
+            <div class="page-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 container my-4">
+                            <div class="product-details-top">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="product-gallery">
+                                            <figure class="product-main-image">
+                                                <img id="product-zoom" src="{% static 'assets/images/products/single/sidebar-gallery/1.jpg' %}" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg" alt="product image">
+                                            </figure><!-- End .product-main-image -->
+                                        </div><!-- End .product-gallery -->
+                                    </div><!-- End .col-md-6 -->
+
+                                    <div class="col-md-6">
+                                        <form action="." id="product-form">
+                                            <div class="product-details product-details-sidebar">
+                                                <h1 class="product-title">{{ product.name }}</h1><!-- End .product-title -->
+                                                <div class="product-price">
+                                                    {{ product.price }}
+                                                </div><!-- End .product-price -->
+    
+                                                <div class="product-content">
+                                                    <p>Sed egestas, ante et vulputate volutpat, eros semper est, vitae luctus metus libero eu augue.</p>
+                                                </div><!-- End .product-content -->
+    
+                                                <div class="product-details-action">
+                                                    <div class="details-action-col">
+                                                        <label for="qty">Qty:</label>
+                                                        <div class="product-details-quantity">
+                                                            <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                                        </div><!-- End .product-details-quantity -->
+    
+                                                    </div><!-- End .details-action-col -->
+                                                </div><!-- End .product-details-action -->
+                                                <button class="btn btn-primary col-md-12 p-4"><span>Add To Cart</span></button>
+                                            </div><!-- End .product-details -->
+                                        </form>
+                                    </div><!-- End .col-md-6 -->
+                                </div><!-- End .row -->
+                            </div><!-- End .product-details-top -->
+                        </div><!-- End .col-lg-9 -->
+                    </div><!-- End .row -->
+
+                </div><!-- End .container -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+    <!-- Plugins JS File -->
+    {% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'store/base.html' %}
+{% load static %}
+    {% block body %}
+    <div class="page-wrapper">
+        {% include 'store/includes/navbar.html' %}
+
+        <main class="main">
+
+            <div class="page-content my-4">
+                <div class="container my-4">
+                    <div class="products">
+                        <div class="row">
+                            {% for product in products %}
+                            <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                <div class="product border">
+                                    <figure class="product-media">
+                                        <span class="product-label label-new">Carted</span>
+                                        <a href="{% url 'product' product.category product.name product.id %}">
+                                            <img src="{{ product.imageURL }}" style="height:200px;object-fit:cover;" alt="Product image" class="product-image">
+                                        </a>
+                                        <div class="product-action action-icon-top">
+                                            <button class="btn-product btn btn-cart update-cart" data-product="{{ product.id }}" data-action="add"><span>add to cart</span></button>
+                                            <a href="{% url 'product' product.category product.name product.id %}" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                            
+                                        </div><!-- End .product-action -->
+                                    </figure><!-- End .product-media -->
+
+                                    <div class="product-body">
+                                        <div class="product-cat">
+                                            <a href="">{{ product.category }}</a>
+                                        </div><!-- End .product-cat -->
+                                        <h3 class="product-title"><a href="{% url 'product' product.category product.name product.id %}">{{ product.name }}</a></h3><!-- End .product-title -->
+                                        <div class="product-price">
+                                            ${{ product.price }}
+                                        </div><!-- End .product-price -->
+                                    </div><!-- End .product-body -->
+                                </div><!-- End .product -->
+                            </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+                            {% endfor %}
+                        </div><!-- End .row -->
+
+                    </div><!-- End .products -->
+                </div><!-- End .container -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+
+        <footer class="footer">
+
+	        <div class="footer-bottom">
+	        	<div class="container">
+	        		<p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+	        	</div><!-- End .container -->
+	        </div><!-- End .footer-bottom -->
+        </footer><!-- End .footer -->
+    </div><!-- End .page-wrapper -->
+    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+{% endblock %}
