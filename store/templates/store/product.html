@@ -13,7 +13,7 @@
                                     <div class="col-md-6">
                                         <div class="product-gallery">
                                             <figure class="product-main-image">
-                                                <img id="product-zoom" src="{% static 'assets/images/products/single/sidebar-gallery/1.jpg' %}" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg" alt="product image">
+                                                <img id="product-zoom" src="{{ product.imageURL }}" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg" alt="product image">
                                             </figure><!-- End .product-main-image -->
                                         </div><!-- End .product-gallery -->
                                     </div><!-- End .col-md-6 -->
@@ -34,7 +34,7 @@
                                                     <div class="details-action-col">
                                                         <label for="qty">Qty:</label>
                                                         <div class="product-details-quantity">
-                                                            <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                                            <input type="number" id="product-quantity" data-product-id="{{ product.id }}" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
                                                         </div><!-- End .product-details-quantity -->
     
                                                     </div><!-- End .details-action-col -->
@@ -52,4 +52,5 @@
             </div><!-- End .page-content -->
         </main><!-- End .main -->
     <!-- Plugins JS File -->
+    <script>add_to_cart_url="{% url 'add-to-cart' %}"</script>
     {% endblock %}

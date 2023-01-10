@@ -78,17 +78,17 @@ def add_to_cart(request):
     if request.method == "POST":
         data=json.loads(request.body)
 
-        product_name=data.product_name
-        product_id=data.product_id
-        product_quantity=data.product_quantity
+        product_id=data['product_id']
+        product_quantity=data['product_quantity']
 
         customer = request.user.customer
-        product=Product.objects.get(name=product_name,id=product_id)
+        product=Product.objects.get(id=product_id)
         order, created=Order.objects.get_or_create(customer=customer, completed=False)
-        orderItem=OrderItem.objects.create(order=order, product=product, quantity=product_quantity)
-
+        orderItem, created=OrderItem.objects.get_or_create(order=order, product=product)
+        orderItem.quantity=product_quantity
+        orderItem.save()
+        
         context={
-            'orderItem':orderItem,
             'status':'carted',
             'message':f'{orderItem.quantity} unit(s) of {orderItem.product.name} added to cart'
         }
